@@ -2,7 +2,7 @@ import React from 'react';
 
 import './Editor.css';
 
-export default function Editor({ setFont, setAlign, setSubtitle, setTitle }) {
+export default function Editor({ setFont, setAlign, setSubtitle, setTitle, setText }) {
   return (
     <div className="editor">
       <div className="form-control">
@@ -26,18 +26,18 @@ export default function Editor({ setFont, setAlign, setSubtitle, setTitle }) {
           <option value="monteserrat">Monteserrat</option>
           <option value="roboto">Roboto</option>
           <option value="roboto-mono">Roboto Mono</option>
-          <option value="titillium"></option>
+          <option value="titillium">Titillium</option>
         </select>
         <label>Font</label>
       </div>
-      <div
-        className="form-control"
-        onClick={() => {
-          setAlign('center');
-        }}
-      >
+      <div className="form-control">
         <label>Alignment</label>
-        <div className="radio-group">
+        <div
+          className="radio-group"
+          onClick={(e) => {
+            setAlign(e.target.value);
+          }}
+        >
           <label>
             <input name="align" type="radio" value="left" />
             <i className="ri-align-left"></i>
@@ -53,7 +53,7 @@ export default function Editor({ setFont, setAlign, setSubtitle, setTitle }) {
         </div>
       </div>
       <div className="form-control">
-        <textarea style={{ height: '250px' }} />
+        <textarea style={{ height: '250px' }} onChange={(e) => setText(e.target.value)} />
         <label>Text</label>
       </div>
     </div>
