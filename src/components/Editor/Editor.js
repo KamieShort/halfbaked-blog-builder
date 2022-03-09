@@ -2,15 +2,15 @@ import React from 'react';
 
 import './Editor.css';
 
-export default function Editor({ setFont }) {
+export default function Editor({ setFont, setAlign, setSubtitle, setTitle }) {
   return (
     <div className="editor">
       <div className="form-control">
-        <input name="title" type="text" />
+        <input name="title" type="text" onChange={(e) => setTitle(e.target.value)} />
         <label htmlFor="title">Title</label>
       </div>
       <div className="form-control">
-        <input type="text" />
+        <input type="text" onChange={(e) => setSubtitle(e.target.value)} />
         <label>Subtitle</label>
       </div>
       <div className="form-control">
@@ -26,11 +26,16 @@ export default function Editor({ setFont }) {
           <option value="monteserrat">Monteserrat</option>
           <option value="roboto">Roboto</option>
           <option value="roboto-mono">Roboto Mono</option>
-          <option value="titillium">Titillium</option>
+          <option value="titillium"></option>
         </select>
         <label>Font</label>
       </div>
-      <div className="form-control">
+      <div
+        className="form-control"
+        onClick={() => {
+          setAlign('center');
+        }}
+      >
         <label>Alignment</label>
         <div className="radio-group">
           <label>
